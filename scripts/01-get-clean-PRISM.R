@@ -72,7 +72,7 @@ temp <- env %>%
   filter(var == "tmean") %>%
   group_by(site) %>%
   reframe(PET_thorn = thornthwaite(value, lat = unique(lat))) %>%
-  mutate(month = rep(1:12, 17))
+  mutate(month = rep(1:12, nrow(locs)))
   
 
 ppt_only <- env %>%
@@ -118,7 +118,7 @@ temp2 <- env %>%
   reframe(PET_harg = hargreaves(tmin, tmax, 
                                 lat = unique(lat),
                                 Pre = ppt)) %>%
-  mutate(month = rep(1:12, 17))
+  mutate(month = rep(1:12, nrow(locs)))
 
 
 ppt_only <- env %>%
